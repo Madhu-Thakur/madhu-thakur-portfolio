@@ -1,15 +1,17 @@
-// Phase 5 — Navbar, Hero, Video Intro, Selected Work, Developer Toolkit.
-// Remaining portfolio sections are implemented in later phases.
+// Phase 6 — Navbar, Hero, Video Intro, Selected Work, Developer Toolkit,
+// My Stack in Action. Remaining sections come in later phases.
 import Navbar from './components/Navbar/Navbar.jsx'
 import Hero from './components/Hero/Hero.jsx'
 import SelectedWork from './components/SelectedWork/SelectedWork.jsx'
 import DeveloperToolkit from './components/DeveloperToolkit/DeveloperToolkit.jsx'
+import StackFlow from './components/StackFlow/StackFlow.jsx'
 import './components/Navbar/Navbar.css'
 import './components/Hero/Hero.css'
 import './components/VideoIntro/VideoIntro.css'
 import './components/SelectedWork/SelectedWork.css'
 import './components/ProjectCard/ProjectCard.css'
 import './components/DeveloperToolkit/DeveloperToolkit.css'
+import './components/StackFlow/StackFlow.css'
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
         <Hero />
         <SelectedWork />
         <DeveloperToolkit />
+        <StackFlow />
       </main>
     </div>
   )

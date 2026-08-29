@@ -1,0 +1,278 @@
+// skills.js — Developer toolkit data.
+//
+// Single source of truth for the technologies shown in the Developer Toolkit.
+// Each skill carries only useful, factual information. Brand colors are NOT
+// applied by default — tiles are neutral and only reveal their brand color on
+// hover/focus (see SkillIcon/DeveloperToolkit CSS).
+//
+// Icons come from react-icons (FontAwesome + Simple Icons). DSA and OOPs are
+// concepts, not brands, so they use tasteful generic icons and the design
+// accent color rather than a fake "brand color".
+
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaReact,
+  FaBootstrap,
+  FaNodeJs,
+  FaJava,
+  FaPython,
+  FaGitAlt,
+  FaGithub,
+  FaWordpress,
+  FaSitemap,
+  FaObjectGroup,
+  FaPalette,
+} from 'react-icons/fa'
+import {
+  SiJavascript,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiExpress,
+  SiMysql,
+  SiPostgresql,
+  SiMongodb,
+  SiFirebase,
+  SiPostman,
+  SiSwagger,
+  SiFigma,
+} from 'react-icons/si'
+
+export const CATEGORIES = [
+  'All',
+  'Frontend',
+  'Backend',
+  'Database',
+  'Tools',
+  'Programming',
+]
+
+export const skills = [
+  // ---------- Frontend ----------
+  {
+    id: 'html5',
+    name: 'HTML5',
+    category: 'Frontend',
+    Icon: FaHtml5,
+    color: '#e34f26',
+    description: 'Building semantic, accessible page structure.',
+    usage: 'Markup foundation for every interface I build.',
+  },
+  {
+    id: 'css3',
+    name: 'CSS3',
+    category: 'Frontend',
+    Icon: FaCss3Alt,
+    color: '#1572b6',
+    description: 'Styling responsive, typography-first layouts.',
+    usage: 'Layout, spacing and design-system styling.',
+  },
+  {
+    id: 'javascript',
+    name: 'JavaScript',
+    category: 'Frontend',
+    Icon: SiJavascript,
+    color: '#f0db4f',
+    description: 'Adding interactivity and app logic.',
+    usage: 'Client-side behaviour across frontend work.',
+  },
+  {
+    id: 'react',
+    name: 'React.js',
+    category: 'Frontend',
+    Icon: FaReact,
+    color: '#61dafb',
+    description: 'Building reusable UI components and interactive interfaces.',
+    usage: 'Used across my portfolio projects.',
+  },
+  {
+    id: 'nextjs',
+    name: 'Next.js',
+    category: 'Frontend',
+    Icon: SiNextdotjs,
+    color: '#171717',
+    description: 'React framework with routing and server rendering.',
+    usage: 'Server-rendered React applications.',
+  },
+  {
+    id: 'bootstrap',
+    name: 'Bootstrap',
+    category: 'Frontend',
+    Icon: FaBootstrap,
+    color: '#7952b3',
+    description: 'Responsive component and layout framework.',
+    usage: 'Rapid responsive layouts.',
+  },
+  {
+    id: 'tailwind',
+    name: 'Tailwind CSS',
+    category: 'Frontend',
+    Icon: SiTailwindcss,
+    color: '#38bdf8',
+    description: 'Utility-first CSS framework.',
+    usage: 'Utility-first page and component styling.',
+  },
+
+  // ---------- Backend ----------
+  {
+    id: 'nodejs',
+    name: 'Node.js',
+    category: 'Backend',
+    Icon: FaNodeJs,
+    color: '#339933',
+    description: 'Running server-side logic and APIs.',
+    usage: 'Backend and API development.',
+  },
+  {
+    id: 'express',
+    name: 'Express.js',
+    category: 'Backend',
+    Icon: SiExpress,
+    color: '#171717',
+    description: 'Web framework for structuring Node.js APIs.',
+    usage: 'Routes, middleware and API structure.',
+  },
+
+  // ---------- Database ----------
+  {
+    id: 'mysql',
+    name: 'MySQL',
+    category: 'Database',
+    Icon: SiMysql,
+    color: '#4479a1',
+    description: 'Storing and querying structured application data.',
+    usage: 'Used in the DEEM Portal.',
+  },
+  {
+    id: 'postgresql',
+    name: 'PostgreSQL',
+    category: 'Database',
+    Icon: SiPostgresql,
+    color: '#4169e1',
+    description: 'Relational database for structured data.',
+    usage: 'Relational schemas and queries.',
+  },
+  {
+    id: 'mongodb',
+    name: 'MongoDB',
+    category: 'Database',
+    Icon: SiMongodb,
+    color: '#47a248',
+    description: 'NoSQL document database.',
+    usage: 'Document-based data modelling.',
+  },
+  {
+    id: 'firebase',
+    name: 'Firebase',
+    category: 'Database',
+    Icon: SiFirebase,
+    color: '#ffca28',
+    description: 'Backend platform for web apps.',
+    usage: 'Auth and realtime data services.',
+  },
+
+  // ---------- Tools ----------
+  {
+    id: 'postman',
+    name: 'Postman',
+    category: 'Tools',
+    Icon: SiPostman,
+    color: '#ff6c37',
+    description: 'Testing and documenting APIs.',
+    usage: 'API request testing.',
+  },
+  {
+    id: 'swagger',
+    name: 'Swagger',
+    category: 'Tools',
+    Icon: SiSwagger,
+    color: '#85ea2d',
+    description: 'Designing and documenting APIs.',
+    usage: 'Documenting REST endpoints.',
+  },
+  {
+    id: 'git',
+    name: 'Git',
+    category: 'Tools',
+    Icon: FaGitAlt,
+    color: '#f05032',
+    description: 'Version control for tracking code changes.',
+    usage: 'Commits, branching and collaboration.',
+  },
+  {
+    id: 'github',
+    name: 'GitHub',
+    category: 'Tools',
+    Icon: FaGithub,
+    color: '#181717',
+    description: 'Hosting and sharing repositories.',
+    usage: 'Code hosting and collaboration.',
+  },
+  {
+    id: 'canva',
+    name: 'Canva',
+    category: 'Tools',
+    Icon: FaPalette,
+    color: '#00c4cc',
+    description: 'Quick design tool for visuals.',
+    usage: 'Graphics and social visuals.',
+  },
+  {
+    id: 'figma',
+    name: 'Figma',
+    category: 'Tools',
+    Icon: SiFigma,
+    color: '#f24e1e',
+    description: 'Interface design and prototyping.',
+    usage: 'Wireframes and UI mockups.',
+  },
+  {
+    id: 'wordpress',
+    name: 'WordPress',
+    category: 'Tools',
+    Icon: FaWordpress,
+    color: '#21759b',
+    description: 'CMS for building websites.',
+    usage: 'Content-driven site builds.',
+  },
+
+  // ---------- Programming ----------
+  {
+    id: 'java',
+    name: 'Java',
+    category: 'Programming',
+    Icon: FaJava,
+    color: '#e76f00',
+    description: 'General-purpose programming language.',
+    usage: 'Core programming and academics.',
+  },
+  {
+    id: 'python',
+    name: 'Python',
+    category: 'Programming',
+    Icon: FaPython,
+    color: '#3776ab',
+    description: 'Scripting and general-purpose language.',
+    usage: 'Scripting and algorithm practice.',
+  },
+  {
+    id: 'dsa',
+    name: 'DSA',
+    category: 'Programming',
+    Icon: FaSitemap,
+    color: '#c65d3b',
+    description: 'Data structures and algorithms for problem-solving.',
+    usage: 'Coding practice and interviews.',
+  },
+  {
+    id: 'oops',
+    name: 'OOPs',
+    category: 'Programming',
+    Icon: FaObjectGroup,
+    color: '#c65d3b',
+    description: 'Object-oriented programming principles.',
+    usage: 'Designing modular, maintainable code.',
+  },
+]
+
+export default skills

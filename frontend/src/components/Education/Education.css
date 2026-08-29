@@ -1,0 +1,52 @@
+/* Education — academic background. Simpler than Projects: strong typography,
+   generous whitespace, restrained. Not a card grid. */
+
+.education {
+  border-top: var(--border);
+}
+
+.education__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+.education__title {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-8);
+}
+
+.education__entry {
+  max-width: 52ch;
+  padding-top: var(--space-6);
+  border-top: var(--border);
+}
+
+.education__degree {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.education__honor {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-white);
+  background: var(--color-accent);
+  border-radius: var(--radius-large);
+  padding: 4px 10px;
+  margin-bottom: var(--space-4);
+}
+
+.education__detail {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}

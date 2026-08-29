@@ -1,0 +1,85 @@
+/* Hero — editorial two-column composition. Asymmetric: text left, video right. */
+.hero {
+  padding-block: var(--section-space);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.hero__eyebrow {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.hero__name {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1.05;
+  margin-bottom: var(--space-4);
+}
+
+.hero__role {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  margin-bottom: var(--space-6);
+}
+
+.hero__description {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 46ch;
+  margin-bottom: var(--space-8);
+}
+
+.hero__actions {
+  row-gap: var(--space-4);
+}
+
+/* The disabled Resume link-button shouldn't advertise an accent hover. */
+.hero__actions .btn--link:disabled {
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+/* Tablet and below: stack content, video first in source already sits right. */
+@media (max-width: 1024px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .hero__media {
+    grid-row: 1;
+  }
+
+  .hero__content {
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .hero__actions .btn--link {
+    display: none;
+  }
+}

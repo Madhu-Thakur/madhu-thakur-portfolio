@@ -1,17 +1,19 @@
-/* Navbar — part of the editorial layout, not a separate flashy component. */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--color-bg);
+  background: rgba(11, 13, 15, 0.92);
+  backdrop-filter: blur(8px);
   border-bottom: var(--border);
 }
 
 .navbar__inner {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
   height: 64px;
+  min-width: 0;
 }
 
 .navbar__brand {
@@ -20,6 +22,11 @@
   letter-spacing: var(--letter-spacing-tight);
   color: var(--color-text);
   margin-right: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex-shrink: 1;
 }
 
 .navbar__brand:hover {
@@ -44,71 +51,61 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
   transition: color var(--transition-fast);
+  white-space: nowrap;
 }
 
-.navbar__link:hover {
-  color: var(--color-text);
+.navbar__link:hover,
+.navbar__link--active {
+  color: #eb5141;
 }
 
 .navbar__resume {
   position: relative;
   display: inline-flex;
   align-items: center;
-}
-
-.navbar__coming-soon {
-  font-size: 0.68rem;
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--letter-spacing-label);
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  background: var(--color-border);
-  border-radius: var(--radius-large);
-  padding: 2px 7px;
-  margin-left: var(--space-2);
-  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .navbar__toggle {
   display: none;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
-  padding: 0 var(--space-2);
-  border: 1px solid transparent;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin-left: var(--space-2);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-small);
-  background: none;
-}
-
-.navbar__toggle:hover {
-  border-color: var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .navbar__toggle-bar {
   display: block;
   width: 20px;
   height: 2px;
-  background: var(--color-text);
-  border-radius: 1px;
+  background: currentColor;
+  border-radius: 2px;
 }
 
-/* Mobile menu drawer */
 .navbar__mobile {
   display: none;
   position: absolute;
   top: calc(100% + 1px);
   left: 0;
   right: 0;
-  background: var(--color-bg);
+  background: var(--color-surface);
   border-bottom: var(--border);
 }
 
 .navbar__mobile-list {
   list-style: none;
   margin: 0;
-  padding: var(--space-4) 0;
+  padding: var(--space-2) var(--page-padding) var(--space-4);
 }
 
 .navbar__mobile-link {
@@ -118,17 +115,24 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-text);
   border-bottom: 1px solid var(--color-border);
+  min-height: 44px;
 }
 
 .navbar__mobile-list li:last-child .navbar__mobile-link {
   border-bottom: none;
 }
 
-.navbar__mobile-link:hover {
-  color: var(--color-accent);
+.navbar__mobile-link:hover,
+.navbar__mobile-link--active {
+  color: #eb5141;
 }
 
-/* Mobile nav is only used below 768px. */
+@media (max-width: 1024px) {
+  .navbar__list {
+    gap: var(--space-4);
+  }
+}
+
 @media (max-width: 767px) {
   .navbar__nav {
     display: none;
@@ -150,11 +154,22 @@
   }
 
   .navbar__mobile--open {
-    max-height: 340px;
+    max-height: 420px;
+    overflow-y: auto;
   }
 
-  /* Hide the mobile menu from assistive tech when closed. */
   .navbar__mobile:not(.navbar__mobile--open) {
     visibility: hidden;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar__inner {
+    height: 60px;
+    gap: var(--space-2);
+  }
+
+  .navbar__brand {
+    font-size: var(--text-base);
   }
 }

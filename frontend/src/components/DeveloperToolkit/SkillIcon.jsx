@@ -1,8 +1,3 @@
-// SkillIcon — a single technology tile.
-//
-// Visible as a neutral icon + name by default. On hover / keyboard focus /
-// tap it reveals the technology's brand color and a detail panel. Only the
-// active tile is emphasised — the rest of the grid stays calm.
 import SkillTooltip from './SkillTooltip.jsx'
 import './DeveloperToolkit.css'
 

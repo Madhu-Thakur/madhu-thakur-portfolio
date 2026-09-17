@@ -1,9 +1,0 @@
-# Backend-specific ignores (root .gitignore also covers these).
-node_modules/
-.env
-.env.*
-!.env.example
-dist/
-coverage/
-logs/
-*.log

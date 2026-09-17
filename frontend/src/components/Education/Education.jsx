@@ -1,24 +1,49 @@
-// Education — academic background.
-//
-// Confirmed: MCA (Master of Computer Applications) and Gold Medalist.
-// Institution, location and year are not confirmed, so those fields use
-// intentional placeholders rather than invented values.
+import { education } from '../../data/education.js'
+import './Education.css'
+
 function Education() {
   return (
     <section id="education" className="section education">
       <div className="container">
         <div className="education__heading">
-          <p className="education__eyebrow">07 — Education</p>
           <h2 className="education__title">Education</h2>
         </div>
 
-        <div className="education__entry">
-          <p className="education__degree">MCA</p>
-          <p className="education__honor">Gold Medalist</p>
-          <p className="education__detail">
-            University and year details to be added.
-          </p>
-        </div>
+        <ol className="education__timeline">
+          {education.map((entry) => (
+            <li
+              key={entry.id}
+              className={`education__entry${
+                entry.current ? ' education__entry--current' : ''
+              }`}
+            >
+              <div className="education__rail" aria-hidden="true">
+                <span className="education__node">★</span>
+                <span className="education__line" />
+                <span className="education__terminus" />
+              </div>
+
+              <article className="education__card">
+                <div className="education__head">
+                  <h3 className="education__degree">{entry.degree}</h3>
+                  {entry.achievement && (
+                    <span className="education__achievement">
+                      {entry.achievement}
+                    </span>
+                  )}
+                </div>
+
+                {entry.institution && (
+                  <p className="education__institution">{entry.institution}</p>
+                )}
+
+                {entry.dates && (
+                  <p className="education__dates">{entry.dates}</p>
+                )}
+              </article>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )

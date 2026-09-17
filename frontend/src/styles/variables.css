@@ -1,28 +1,27 @@
-/* ============================================================
-   variables.css — Design tokens (single source of truth)
-   Editorial developer portfolio design system.
-   ============================================================ */
-
 :root {
-  /* ---------- Color system ---------- */
-  --color-bg: #f7f5f0; /* page background           */
-  --color-text: #171717; /* primary text              */
-  --color-text-secondary: #66615b; /* muted / secondary text */
-  --color-accent: #c65d3b; /* terracotta accent (sparing) */
-  --color-dark: #181a1b; /* dark section background  */
-  --color-border: #ddd8cf; /* hairline borders          */
-  --color-white: #ffffff;
-
-  /* ---------- Typography ---------- */
+  --color-bg: #0b0d0f;
+  --color-surface: #11161b;
+  --color-surface-2: #161c22;
+  --color-text: #f0f0f0;
+  --color-text-secondary: #9ca3af;
+  --color-accent: #c65d3b;
+  --color-dark: #181a1b;
+  --color-border: #1f2937;
+  --color-white: #11161b;
+ 
+  --color-primary: #144667;
+  --color-primary-tint: #142a3a;
+  --color-accent-bright: #eb5141;
+ 
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif;
 
-  --text-xs: 0.75rem; /*  12px  labels / eyebrow   */
-  --text-sm: 0.875rem; /*  14px  small              */
-  --text-base: 1rem; /*  16px  body               */
-  --text-lg: 1.125rem; /*  18px  intro              */
-  --text-xl: 1.25rem; /*  20px                      */
-  --text-2xl: 1.5rem; /*  24px                      */
+  --text-xs: 0.75rem;  
+  --text-sm: 0.875rem;  
+  --text-base: 1rem; 
+  --text-lg: 1.125rem; 
+  --text-xl: 1.25rem; 
+  --text-2xl: 1.5rem; 
 
   --font-size-h1: clamp(2.25rem, 5vw, 3.25rem);
   --font-size-h2: clamp(1.5rem, 3vw, 2rem);
@@ -39,9 +38,8 @@
 
   --letter-spacing-tight: -0.02em;
   --letter-spacing-body: -0.011em;
-  --letter-spacing-label: 0.06em; /* uppercase eyebrow/labels */
-
-  /* ---------- Spacing scale ---------- */
+  --letter-spacing-label: 0.06em;  
+ 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -51,27 +49,18 @@
   --space-8: 2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
-  --space-16: 4rem;
-
-  /* ---------- Layout ---------- */
+ 
   --container-max: 1120px;
   --page-padding: clamp(1.25rem, 4vw, 2rem);
   --section-space: clamp(3rem, 7vw, 5rem);
-  --section-space-small: clamp(2rem, 4vw, 3rem);
-  --section-space-large: clamp(4rem, 10vw, 7rem);
 
-  /* ---------- Borders / radius / shadow ---------- */
+ 
   --border: 1px solid var(--color-border);
   --radius-small: 4px;
   --radius-medium: 8px;
-  --radius-large: 12px; /* video frame / special surfaces */
+  --radius-large: 12px;  
 
-  --shadow-subtle: 0 1px 2px rgba(23, 23, 23, 0.05),
-    0 2px 8px rgba(23, 23, 23, 0.04);
-  --shadow-soft: 0 6px 20px rgba(23, 23, 23, 0.06);
-
-  /* ---------- Motion ---------- */
+  --shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.4);
   --transition-fast: 150ms ease;
   --transition-base: 200ms ease;
-  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }

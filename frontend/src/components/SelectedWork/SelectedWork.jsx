@@ -1,36 +1,42 @@
+import { useState } from 'react'
 import projects from '../../data/projects.js'
-import ProjectCard from '../ProjectCard/ProjectCard.jsx'
+import ProjectSelector from '../ProjectSelector/ProjectSelector.jsx'
+import ProjectShowcase from '../ProjectShowcase/ProjectShowcase.jsx'
 import './SelectedWork.css'
 
+const numberedProjects = projects.map((project, index) => ({
+  ...project,
+  number: String(index + 1).padStart(2, '0'),
+}))
+
 function SelectedWork() {
-  const featured = projects.find((project) => project.featured)
-  const rest = projects.filter((project) => !project.featured)
+  const [activeId, setActiveId] = useState(
+    numberedProjects[0]?.id
+  )
+
+  const activeProject =
+    numberedProjects.find(
+      (project) => project.id === activeId
+    ) ?? numberedProjects[0]
+
+  if (!activeProject) return null
 
   return (
     <section id="projects" className="section selected-work">
       <div className="container">
         <div className="selected-work__heading">
-          <p className="selected-work__eyebrow">02 — Selected Work</p>
-          <h2 className="selected-work__title">Selected Work</h2>
-          <p className="selected-work__intro">
-            A selection of projects I’ve built while exploring frontend and
-            full-stack development.
-          </p>
+          <h2 className="selected-work__title">
+            My Projects
+          </h2>
         </div>
 
-        {featured && (
-          <div className="selected-work__featured">
-            <ProjectCard project={featured} featured />
-          </div>
-        )}
+        <ProjectSelector
+          items={numberedProjects}
+          activeId={activeProject.id}
+          onSelect={setActiveId}
+        />
 
-        <ul className="selected-work__grid">
-          {rest.map((project) => (
-            <li key={project.id} className="selected-work__grid-item">
-              <ProjectCard project={project} />
-            </li>
-          ))}
-        </ul>
+        <ProjectShowcase project={activeProject} />
       </div>
     </section>
   )

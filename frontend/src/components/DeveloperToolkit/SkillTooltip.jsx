@@ -1,4 +1,3 @@
-// SkillTooltip — small editorial detail panel shown on hover/focus/tap.
 import './DeveloperToolkit.css'
 
 function SkillTooltip({ skill, tooltipId }) {

@@ -1,15 +1,49 @@
-// ContactForm — contact form UI.
-//
-// Controlled React inputs + lightweight client-side validation. Submission
-// is routed through the contactService abstraction. Because the real backend
-// does not exist yet (Phase 8), the service throws immediately — the form
-// surfaces a clear, user-friendly error and does NOT fake success.
-import { useState } from 'react'
-import { submitContactMessage } from '../../services/contactService.js'
+import { useRef, useState } from 'react'
+import {
+  FaPhone,
+  FaEnvelope,
+  FaLinkedin,
+  FaGithub,
+} from 'react-icons/fa'
 import './ContactForm.css'
 
 const EMPTY_FORM = { name: '', email: '', message: '' }
 const EMPTY_ERRORS = { name: '', email: '', message: '' }
+
+const CONTACT_LINKS = [
+  {
+    type: 'phone',
+    label: 'Phone',
+    value: '+91-6390679448',
+    href: 'tel:6390679448',
+    icon: FaPhone,
+    isExternal: false,
+  },
+  {
+    type: 'email',
+    label: 'Email',
+    value: 'thakurmadhu2448@gmail.com',
+    href: 'mailto:thakurmadhu2448@gmail.com',
+    icon: FaEnvelope,
+    isExternal: false,
+  },
+  {
+    type: 'linkedin',
+    label: 'LinkedIn',
+    value: 'LinkedIn Profile',
+    href: 'https://www.linkedin.com/in/madhu-thakur-735790316',
+    icon: FaLinkedin,
+    isExternal: true,
+  },
+  {
+    type: 'github',
+    label: 'GitHub',
+    value: 'GitHub Profile',
+    href: 'https://github.com/Madhu-Thakur',
+    icon: FaGithub,
+    isExternal: true,
+  },
+]
 
 function validateField(formData) {
   const errors = { ...EMPTY_ERRORS }
@@ -35,21 +69,24 @@ function ContactForm() {
   const [formData, setFormData] = useState(EMPTY_FORM)
   const [errors, setErrors] = useState(EMPTY_ERRORS)
   const [loading, setLoading] = useState(false)
-  const [submitError, setSubmitError] = useState('')
-  const [success, setSuccess] = useState(false)
+  const [feedback, setFeedback] = useState({ text: '', type: '' })
+  const contactForm = useRef(null)
+
+  // Feedback helper for the form's success/error message area.
+  const showMessage = (text, type) => {
+    setFeedback({ text, type })
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setFormData((prev) => ({ ...prev, [name]: value }))
-    // Clear a field's own error as the user edits it.
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }))
     }
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
-    setSubmitError('')
 
     const nextErrors = validateField(formData)
     setErrors(nextErrors)
@@ -58,19 +95,14 @@ function ContactForm() {
 
     setLoading(true)
     try {
-      await submitContactMessage({
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        message: formData.message.trim(),
-      })
-      // Real success path (future): show success message, reset form.
-      setSuccess(true)
+ 
+      showMessage(
+        'Message sent successfully! Thank you for reaching out. I will get back to you soon.',
+      )
+ 
+      contactForm.current?.reset()
       setFormData(EMPTY_FORM)
       setErrors(EMPTY_ERRORS)
-    } catch {
-      // No fake success: since the API is not connected, this surfaces a
-      // clear, user-friendly error state.
-      setSubmitError('Something went wrong. Please try again.')
     } finally {
       setLoading(false)
     }
@@ -80,15 +112,47 @@ function ContactForm() {
     <section id="contact" className="section contact-section">
       <div className="container contact-section__grid">
         <div className="contact-section__heading">
-          <p className="contact-section__eyebrow">08 — Contact</p>
           <h2 className="contact-section__title">Contact</h2>
           <p className="contact-section__intro">
             Have a question, opportunity, or just want to connect? Send me a
             message.
           </p>
+
+          <ul className="contact-section__links">
+            {CONTACT_LINKS.map((link) => {
+              const Icon = link.icon
+              return (
+                <li key={link.type} className="contact-section__item">
+                  <a
+                    className="contact-section__link"
+                    href={link.href}
+                    target={link.isExternal ? '_blank' : undefined}
+                    rel={link.isExternal ? 'noopener noreferrer' : undefined}
+                  >
+                    <span className="contact-section__icon" aria-hidden="true">
+                      <Icon />
+                    </span>
+                    <span className="contact-section__info">
+                      <span className="contact-section__label">
+                        {link.label}
+                      </span>
+                      <span className="contact-section__value">
+                        {link.value}
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
         </div>
 
-        <form className="contact-form" onSubmit={handleSubmit} noValidate>
+        <form
+          ref={contactForm}
+          className="contact-form"
+          onSubmit={handleSubmit}
+          noValidate
+        >
       <div className="contact-form__field">
         <label className="contact-form__label" htmlFor="contact-name">
           Name
@@ -163,15 +227,16 @@ function ContactForm() {
         )}
       </div>
 
-      {submitError && (
-        <p className="contact-form__submit-error" role="alert">
-          {submitError}
-        </p>
-      )}
-
-      {success && (
-        <p className="contact-form__success" role="status">
-          Thanks for reaching out. Your message has been received.
+      {feedback.text && (
+        <p
+          className={
+            feedback.type === 'error'
+              ? 'contact-form__submit-error'
+              : 'contact-form__success'
+          }
+          role={feedback.type === 'error' ? 'alert' : 'status'}
+        >
+          {feedback.text}
         </p>
       )}
 

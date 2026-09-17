@@ -1,14 +1,3 @@
-// skills.js — Developer toolkit data.
-//
-// Single source of truth for the technologies shown in the Developer Toolkit.
-// Each skill carries only useful, factual information. Brand colors are NOT
-// applied by default — tiles are neutral and only reveal their brand color on
-// hover/focus (see SkillIcon/DeveloperToolkit CSS).
-//
-// Icons come from react-icons (FontAwesome + Simple Icons). DSA and OOPs are
-// concepts, not brands, so they use tasteful generic icons and the design
-// accent color rather than a fake "brand color".
-
 import {
   FaHtml5,
   FaCss3Alt,
@@ -22,7 +11,6 @@ import {
   FaWordpress,
   FaSitemap,
   FaObjectGroup,
-  FaPalette,
 } from 'react-icons/fa'
 import {
   SiJavascript,
@@ -35,20 +23,34 @@ import {
   SiFirebase,
   SiPostman,
   SiSwagger,
-  SiFigma,
 } from 'react-icons/si'
 
 export const CATEGORIES = [
-  'All',
-  'Frontend',
-  'Backend',
-  'Database',
-  'Tools',
-  'Programming',
+  {
+    name: 'Frontend',
+    description:
+      'Client interfaces, responsive layouts and component-driven applications.',
+  },
+  {
+    name: 'Backend',
+    description: 'Server-side logic, APIs and backend services.',
+  },
+  {
+    name: 'Database',
+    description: 'Storing, querying and modelling application data.',
+  },
+  {
+    name: 'Programming & CS',
+    description:
+      'Core programming concepts and computer science fundamentals.',
+  },
+  {
+    name: 'Tools & Workflow',
+    description: 'Tools I use to plan, build and ship projects.',
+  },
 ]
 
 export const skills = [
-  // ---------- Frontend ----------
   {
     id: 'html5',
     name: 'HTML5',
@@ -112,8 +114,7 @@ export const skills = [
     description: 'Utility-first CSS framework.',
     usage: 'Utility-first page and component styling.',
   },
-
-  // ---------- Backend ----------
+ 
   {
     id: 'nodejs',
     name: 'Node.js',
@@ -132,8 +133,7 @@ export const skills = [
     description: 'Web framework for structuring Node.js APIs.',
     usage: 'Routes, middleware and API structure.',
   },
-
-  // ---------- Database ----------
+ 
   {
     id: 'mysql',
     name: 'MySQL',
@@ -170,12 +170,11 @@ export const skills = [
     description: 'Backend platform for web apps.',
     usage: 'Auth and realtime data services.',
   },
-
-  // ---------- Tools ----------
+ 
   {
     id: 'postman',
     name: 'Postman',
-    category: 'Tools',
+    category: 'Backend',
     Icon: SiPostman,
     color: '#ff6c37',
     description: 'Testing and documenting APIs.',
@@ -184,7 +183,7 @@ export const skills = [
   {
     id: 'swagger',
     name: 'Swagger',
-    category: 'Tools',
+    category: 'Backend',
     Icon: SiSwagger,
     color: '#85ea2d',
     description: 'Designing and documenting APIs.',
@@ -193,7 +192,7 @@ export const skills = [
   {
     id: 'git',
     name: 'Git',
-    category: 'Tools',
+    category: 'Tools & Workflow',
     Icon: FaGitAlt,
     color: '#f05032',
     description: 'Version control for tracking code changes.',
@@ -202,45 +201,26 @@ export const skills = [
   {
     id: 'github',
     name: 'GitHub',
-    category: 'Tools',
+    category: 'Tools & Workflow',
     Icon: FaGithub,
     color: '#181717',
     description: 'Hosting and sharing repositories.',
     usage: 'Code hosting and collaboration.',
   },
   {
-    id: 'canva',
-    name: 'Canva',
-    category: 'Tools',
-    Icon: FaPalette,
-    color: '#00c4cc',
-    description: 'Quick design tool for visuals.',
-    usage: 'Graphics and social visuals.',
-  },
-  {
-    id: 'figma',
-    name: 'Figma',
-    category: 'Tools',
-    Icon: SiFigma,
-    color: '#f24e1e',
-    description: 'Interface design and prototyping.',
-    usage: 'Wireframes and UI mockups.',
-  },
-  {
     id: 'wordpress',
     name: 'WordPress',
-    category: 'Tools',
+    category: 'Tools & Workflow',
     Icon: FaWordpress,
     color: '#21759b',
     description: 'CMS for building websites.',
     usage: 'Content-driven site builds.',
   },
-
-  // ---------- Programming ----------
+ 
   {
     id: 'java',
     name: 'Java',
-    category: 'Programming',
+    category: 'Programming & CS',
     Icon: FaJava,
     color: '#e76f00',
     description: 'General-purpose programming language.',
@@ -249,7 +229,7 @@ export const skills = [
   {
     id: 'python',
     name: 'Python',
-    category: 'Programming',
+    category: 'Programming & CS',
     Icon: FaPython,
     color: '#3776ab',
     description: 'Scripting and general-purpose language.',
@@ -258,21 +238,19 @@ export const skills = [
   {
     id: 'dsa',
     name: 'DSA',
-    category: 'Programming',
+    category: 'Programming & CS',
     Icon: FaSitemap,
-    color: '#c65d3b',
+    color: '#eb5141',
     description: 'Data structures and algorithms for problem-solving.',
     usage: 'Coding practice and interviews.',
   },
   {
     id: 'oops',
     name: 'OOPs',
-    category: 'Programming',
+    category: 'Programming & CS',
     Icon: FaObjectGroup,
-    color: '#c65d3b',
+    color: '#eb5141',
     description: 'Object-oriented programming principles.',
     usage: 'Designing modular, maintainable code.',
   },
 ]
-
-export default skills

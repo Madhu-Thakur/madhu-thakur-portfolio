@@ -2,17 +2,20 @@ import { useEffect, useState } from 'react'
 import './Navbar.css'
 
 const NAV_LINKS = [
+  { label: 'Home', href: '#top' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Education', href: '#education' },
+  { label: 'Certifications', href: '#certifications' },
   { label: 'Contact', href: '#contact' },
 ]
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
 
-  // Close the mobile menu whenever the viewport grows past the breakpoint.
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)')
     const handleChange = (event) => {
@@ -20,6 +23,28 @@ function Navbar() {
     }
     mediaQuery.addEventListener('change', handleChange)
     return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
+
+  useEffect(() => {
+    const sections = NAV_LINKS.map((link) => ({
+      id: link.href.slice(1),
+      el: document.getElementById(link.href.slice(1)),
+    })).filter((s) => s.el)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id)
+        }
+      },
+      { rootMargin: '-40% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+    )
+
+    sections.forEach((s) => observer.observe(s.el))
+    return () => observer.disconnect()
   }, [])
 
   const handleLinkClick = () => setMenuOpen(false)
@@ -33,13 +58,20 @@ function Navbar() {
 
         <nav className="navbar__nav" aria-label="Primary">
           <ul className="navbar__list">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <a className="navbar__link" href={link.href}>
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const sectionId = link.href.slice(1)
+              const isActive = activeSection === sectionId
+              return (
+                <li key={link.href}>
+                  <a
+                    className={`navbar__link${isActive ? ' navbar__link--active' : ''}`}
+                    href={link.href}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
         </nav>
 
@@ -52,9 +84,6 @@ function Navbar() {
           >
             Resume
           </button>
-          <span className="navbar__coming-soon" aria-hidden="true">
-            Coming soon
-          </span>
         </div>
 
         <button
@@ -69,27 +98,27 @@ function Navbar() {
           <span className="navbar__toggle-bar" />
         </button>
 
-        {/*
-          Mobile menu is rendered at the end of the header so the toggle
-          (aria-controls) can reference it in the same tree.
-        */}
         <div
           id="navbar-menu"
           className={`navbar__mobile ${menuOpen ? 'navbar__mobile--open' : ''}`}
         >
           <nav aria-label="Primary (mobile)">
             <ul className="navbar__mobile-list">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    className="navbar__mobile-link"
-                    href={link.href}
-                    onClick={handleLinkClick}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const sectionId = link.href.slice(1)
+                const isActive = activeSection === sectionId
+                return (
+                  <li key={link.href}>
+                    <a
+                      className={`navbar__mobile-link${isActive ? ' navbar__mobile-link--active' : ''}`}
+                      href={link.href}
+                      onClick={handleLinkClick}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                )
+              })}
             </ul>
           </nav>
         </div>

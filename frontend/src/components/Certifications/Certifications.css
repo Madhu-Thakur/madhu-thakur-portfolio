@@ -1,0 +1,261 @@
+.certifications {
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.certifications__heading {
+  max-width: 52ch;
+  margin-bottom: var(--space-8);
+}
+
+.certifications__title {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-4);
+}
+
+.certifications__intro {
+  font-size: var(--text-base);
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+}
+
+ 
+.certifications__registry {
+  border: var(--border);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.certifications__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr) minmax(0, 0.9fr) minmax(
+      0,
+      0.5fr
+    );
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-surface-2);
+  border-bottom: var(--border);
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  min-width: 0;
+}
+
+.certifications__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.certifications__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr) minmax(0, 0.9fr) minmax(
+      0,
+      0.5fr
+    );
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  min-width: 0;
+}
+
+.certifications__row:last-child {
+  border-bottom: none;
+}
+
+/* ---------- Cells ---------- */
+.certifications__name-wrap {
+  min-width: 0;
+}
+
+.certifications__name {
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  color: var(--color-primary);
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+.certifications__credential {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+  overflow-wrap: break-word;
+}
+
+.certifications__instructor {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+  overflow-wrap: break-word;
+}
+
+.certifications__description {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+  overflow-wrap: break-word;
+}
+
+.certifications__row--achievement .certifications__name {
+  color: var(--color-accent-bright);
+}
+
+.certifications__issuer {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  overflow-wrap: break-word;
+}
+
+.certifications__issued {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  overflow-wrap: break-word;
+  font-variant-numeric: tabular-nums;
+}
+
+.certifications__recipient {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.certifications__recipient-label {
+  color: var(--color-text-secondary);
+}
+
+.certifications__typewriter {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent-bright);
+  font-variant-numeric: tabular-nums;
+}
+
+.certifications__cursor {
+  font-weight: var(--font-weight-normal);
+  color: var(--color-accent-bright);
+  opacity: 0;
+  transition: opacity 0.1s step-end;
+}
+
+.certifications__cursor--visible {
+  opacity: 1;
+}
+
+.certifications__verify-disabled {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.certifications__verify {
+  justify-self: end;
+  min-width: 0;
+}
+
+.certifications__verify-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
+}
+
+.certifications__verify-link:hover {
+  color: var(--color-accent-bright);
+  text-decoration-color: var(--color-accent-bright);
+}
+
+.certifications__empty {
+  padding: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 1023px) {
+  .certifications__head,
+  .certifications__row {
+    padding-inline: var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .certifications__cursor {
+    transition: none;
+  }
+}
+
+ 
+@media (max-width: 767px) {
+  .certifications__head {
+    display: none;
+  }
+
+  .certifications__registry {
+    border-radius: var(--radius-medium);
+  }
+
+  .certifications__row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-2) var(--space-3);
+    padding: var(--space-4);
+    align-items: start;
+  }
+
+  .certifications__name-wrap {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .certifications__verify {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .certifications__issuer,
+  .certifications__issued {
+    grid-column: 1 / -1;
+  }
+
+  .certifications__issuer::before,
+  .certifications__issued::before {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-label);
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: 2px;
+  }
+
+  .certifications__issuer::before {
+    content: 'Issuing Organization';
+  }
+
+  .certifications__issued::before {
+    content: 'Issued';
+  }
+}

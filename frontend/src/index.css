@@ -1,7 +1,3 @@
-/* ============================================================
-   index.css — Frontend stylesheet entry point (imported by main.jsx)
-   Single source of truth lives in src/styles/variables.css and
-   src/styles/global.css.
-   ============================================================ */
+ 
 @import './styles/variables.css';
 @import './styles/global.css';

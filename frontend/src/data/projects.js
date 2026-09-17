@@ -16,6 +16,13 @@ import expense1 from '../assets/expense-1.png'
 import expense2 from '../assets/expense-2.png'
 import expense3 from '../assets/expense-3.png'
 
+import port1 from '../assets/port-1.png'
+import port2 from '../assets/port-2.png'
+import port3 from '../assets/port-3.png'
+import port4 from '../assets/port-4.png'
+import port5 from '../assets/port-5.png'
+import port6 from '../assets/port-6.png'
+
 import rb1 from '../assets/rb-1.png'
 import rb2 from '../assets/rb-2.png'
 import rb3 from '../assets/rb-3.png'
@@ -134,16 +141,25 @@ const projects = [
     title: 'Personal Portfolio',
     category: 'Portfolio Website',
     description:
-      'A personal portfolio website currently being developed to showcase my full-stack development skills, projects, experience, education, and certifications.',
+      'A responsive personal portfolio website built to showcase my skills, experience, education, certifications, and projects as a Full Stack Web Developer.',
     technologies: [
       'React.js',
       'Vite',
       'JavaScript',
       'CSS',
     ],
-    images: [],
-    liveUrl: null,
-    githubUrl: null,
+    images: [
+      port1,
+      port2,
+      port3,
+      port4,
+      port5,
+      port6,
+    ],
+    liveUrl:
+      'https://madhu-thakur-portfolio.vercel.app/',
+    githubUrl:
+      'https://github.com/Madhu-Thakur/madhu-thakur-portfolio',
   },
 ]
 

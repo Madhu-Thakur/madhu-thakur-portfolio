@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './Navbar.css'
 
+import resumePdf from "../../assets/Madhu-Thakur-Full-Stack-Web-Developer-Resume.pdf.pdf"
+
 const NAV_LINKS = [
   { label: 'Home', href: '#top' },
   { label: 'About', href: '#about' },
@@ -76,14 +78,15 @@ function Navbar() {
         </nav>
 
         <div className="navbar__resume">
-          <button
-            type="button"
+          <a
+            href={resumePdf}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn btn--secondary"
-            disabled
-            title="Resume coming soon"
+            aria-label="Download resume PDF (opens in a new tab)"
           >
             Resume
-          </button>
+          </a>
         </div>
 
         <button
@@ -119,6 +122,17 @@ function Navbar() {
                   </li>
                 )
               })}
+              <li>
+                <a
+                  href={resumePdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="navbar__mobile-link"
+                  onClick={handleLinkClick}
+                >
+                  Resume
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
